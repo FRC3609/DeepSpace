@@ -1,4 +1,4 @@
-package main.java.frc.robot.subsystems;
+package frc.robot.subsystems;
 
 // WPI libraries
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -7,11 +7,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap.CAN;
 
 // CTRE Libraries
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-// Robot Libraries
-import org.usfirst.frc.team3609.robot.RobotMap;
+import com.ctre.phoenix.motorcontrol.can.*;
 
-public class Drivebase extends Subsystem {
+public class DriveBase extends Subsystem {
 	private DifferentialDrive m_Drive;
 	private WPI_TalonSRX leftMaster;
 	private WPI_TalonSRX leftFollower;
@@ -21,7 +19,7 @@ public class Drivebase extends Subsystem {
 	public SpeedControllerGroup m_Left;
 	public SpeedControllerGroup m_Right;
 
-	public Drivebase() {
+	public DriveBase() {
         // Setup the motor controllers
 		leftMaster = new WPI_TalonSRX(CAN.LEFT_MASTER_SRX);
 		leftFollower = new WPI_TalonSRX(CAN.LEFT_FOLLOWER_SRX);
@@ -35,13 +33,14 @@ public class Drivebase extends Subsystem {
     }
 
 	protected void initDefaultCommand() {
-		setDefaultCommand(System.out.println("DriveBase Default Command not Implemented!"));
+		System.out.println("DriveBase Default Command not Implemented!");
+		//setDefaultCommand(System.out.println("DriveBase Default Command not Implemented!"));
 
 	}
 
 	public void Stop() {
         // Stop all motors by setting their output to 0
-		m_Drive.TankDrive(0,0);
+		m_Drive.tankDrive(0,0);
 	}
 
 }
