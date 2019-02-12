@@ -29,4 +29,8 @@ public class RobotMap {
     public static final int LEFT_FOLLOWER_SRX = 11;
     public static final int RIGHT_FOLLOWER_SRX = 13;
   }
+  public static class CONTROLLER {
+    public static final int DRIVER_CONTROLLER = 1;
+    public static final int OPERATOR_CONTROLLER = 2;
+  }
 }
