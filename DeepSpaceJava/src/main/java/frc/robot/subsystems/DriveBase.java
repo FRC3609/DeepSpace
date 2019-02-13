@@ -5,21 +5,26 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap.CAN;
+import frc.robot.OI;
+import frc.robot.Robot;
 
 // CTRE Libraries
 import com.ctre.phoenix.motorcontrol.can.*;
 
-public class DriveBase extends Subsystem {
+public class DriveBase extends Subsystem 
+{
 	private DifferentialDrive m_Drive;
 	private WPI_TalonSRX leftMaster;
 	private WPI_TalonSRX leftFollower;
 	private WPI_TalonSRX rightMaster;
 	private WPI_TalonSRX rightFollower;
 
-	public SpeedControllerGroup m_Left;
-	public SpeedControllerGroup m_Right;
-
-	public DriveBase() {
+	private SpeedControllerGroup m_Left;
+	private SpeedControllerGroup m_Right;
+	private OI _oi;
+	
+	public DriveBase() 
+	{
         // Setup the motor controllers
 		leftMaster = new WPI_TalonSRX(CAN.LEFT_MASTER_SRX);
 		leftFollower = new WPI_TalonSRX(CAN.LEFT_FOLLOWER_SRX);
@@ -30,17 +35,23 @@ public class DriveBase extends Subsystem {
         m_Right = new SpeedControllerGroup(rightMaster, rightFollower);
         // Create the drive base
         m_Drive = new DifferentialDrive(m_Left, m_Right);
-    }
-
-	protected void initDefaultCommand() {
-		System.out.println("DriveBase Default Command not Implemented!");
-		//setDefaultCommand(System.out.println("DriveBase Default Command not Implemented!"));
-
+		_oi = OI.getInstance();
 	}
 
-	public void Stop() {
-        // Stop all motors by setting their output to 0
-		m_Drive.tankDrive(0,0);
+	protected void initDefaultCommand()
+	{
+
+	}
+	protected void execute() 
+	{
+		// Cheesy Drive
+		m_Drive.curvatureDrive(_oi.getDriveSpeed(), _oi.getCurvature(), _oi.getQuickTurn());
+	}
+
+	public void Stop() 
+	{
+        // Stop all motors
+		m_Drive.stopMotor();
 	}
 
 }

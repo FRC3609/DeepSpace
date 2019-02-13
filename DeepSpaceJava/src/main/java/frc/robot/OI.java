@@ -8,11 +8,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
+public class OI 
+{
+  private static OI singleInstance = null;
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -42,9 +45,38 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
   private XboxController _driverController;
   private XboxController _operatorController;
+  
 
-  public OI() {
+  public OI() 
+  {
     _driverController = new XboxController(RobotMap.CONTROLLER.DRIVER_CONTROLLER);
     _operatorController = new XboxController(RobotMap.CONTROLLER.OPERATOR_CONTROLLER);
+  }
+
+  public double getDriveSpeed()
+  {
+    return _driverController.getY(Hand.kLeft);
+  }
+
+  public double getCurvature()
+  {
+    return _driverController.getX(Hand.kRight);
+  }
+
+  public boolean getQuickTurn()
+  {
+    if(_driverController.getAButtonPressed() && !_driverController.getAButtonReleased())
+    {
+      return true;
+    }
+    return false;
+  }
+  public static OI getInstance()
+  {
+    if (singleInstance == null)
+    {
+      singleInstance = new OI ();
+    }
+    return singleInstance;
   }
 }
