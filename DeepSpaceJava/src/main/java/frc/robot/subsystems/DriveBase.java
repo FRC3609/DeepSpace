@@ -40,7 +40,7 @@ public class DriveBase extends Subsystem
 
 	protected void initDefaultCommand()
 	{
-
+		setDefaultCommand(this);
 	}
 	public void cheesyDrive() 
 	{
