@@ -42,7 +42,7 @@ public class DriveBase extends Subsystem
 	{
 
 	}
-	protected void execute() 
+	public void cheesyDrive() 
 	{
 		// Cheesy Drive
 		m_Drive.curvatureDrive(_oi.getDriveSpeed(), _oi.getCurvature(), _oi.getQuickTurn());
