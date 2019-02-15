@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap.CAN;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
 // CTRE Libraries
@@ -47,7 +48,7 @@ public class DriveBase extends Subsystem
 	{
 		// Cheesy Drive
 		//m_Drive.curvatureDrive(_oi.getDriveSpeed(), _oi.getCurvature(), _oi.getQuickTurn());
-		m_Drive.tankDrive(_oi.getLeftDrive(), _oi.getRightDrive(), true);
+		m_Drive.tankDrive(_oi.getLeftDrive() * RobotMap.LIMITS.DRIVE_LIMIT, _oi.getRightDrive() * RobotMap.LIMITS.DRIVE_LIMIT, true);
 	}
 
 	public void Stop() 

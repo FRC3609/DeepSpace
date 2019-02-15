@@ -36,4 +36,8 @@ public class RobotMap
     public static final int DRIVER_CONTROLLER = 0;
     public static final int OPERATOR_CONTROLLER = 1;
   }
+  public static class LIMITS
+  {
+    public static final double DRIVE_LIMIT = 0.8;
+  }
 }

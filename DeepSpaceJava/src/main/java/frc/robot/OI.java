@@ -45,7 +45,7 @@ public class OI
   // button.whenReleased(new ExampleCommand());
   private XboxController _driverController;
   private XboxController _operatorController;
-  
+  private boolean quickTurnPressed = false;
 
   public OI() 
   {
@@ -72,7 +72,7 @@ public class OI
 
   public boolean getQuickTurn()
   {
-    if(_driverController.getAButtonPressed() && !_driverController.getAButtonReleased())
+    if(_driverController.getTriggerAxis(Hand.kLeft) > 0)
     {
       return true;
     }
