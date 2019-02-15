@@ -26,10 +26,10 @@ public class RobotMap
   // public static int rangefinderModule = 1;
   public static class CAN 
   {
-    public static final int LEFT_MASTER_SRX = 10;
-    public static final int RIGHT_MASTER_SRX = 15;
-    public static final int LEFT_FOLLOWER_SRX = 11;
-    public static final int RIGHT_FOLLOWER_SRX = 14;
+    public static final int LEFT_MASTER_SRX = 14;
+    public static final int RIGHT_MASTER_SRX = 13;
+    public static final int LEFT_FOLLOWER_SRX = 10;
+    public static final int RIGHT_FOLLOWER_SRX = 11;
   }
   public static class CONTROLLER 
   {
