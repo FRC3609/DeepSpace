@@ -52,7 +52,14 @@ public class OI
     _driverController = new XboxController(RobotMap.CONTROLLER.DRIVER_CONTROLLER);
     _operatorController = new XboxController(RobotMap.CONTROLLER.OPERATOR_CONTROLLER);
   }
-
+  public double getLeftDrive()
+  {
+    return _driverController.getY(Hand.kLeft);
+  }
+  public double getRightDrive()
+  {
+    return _driverController.getY(Hand.kRight);
+  }
   public double getDriveSpeed()
   {
     return _driverController.getY(Hand.kLeft);

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap.CAN;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.commands.*;
 
 // CTRE Libraries
 import com.ctre.phoenix.motorcontrol.can.*;
@@ -40,7 +41,7 @@ public class DriveBase extends Subsystem
 
 	protected void initDefaultCommand()
 	{
-		setDefaultCommand(this);
+		setDefaultCommand(new Drive(this));
 	}
 	public void cheesyDrive() 
 	{
