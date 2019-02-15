@@ -45,7 +45,6 @@ public class OI
   // button.whenReleased(new ExampleCommand());
   private XboxController _driverController;
   private XboxController _operatorController;
-  private boolean quickTurnPressed = false;
 
   public OI() 
   {
