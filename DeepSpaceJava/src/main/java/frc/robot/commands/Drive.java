@@ -3,14 +3,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.DriveBase;
+import frc.robot.OI;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class Drive extends Command {
     DriveBase _driveBase;
+    OI _oi;
   public Drive(DriveBase driveBase) {
     _driveBase = driveBase;
+    _oi = new OI();
     requires(_driveBase);
   }
 
@@ -22,7 +25,7 @@ public class Drive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      _driveBase.cheesyDrive();
+      _driveBase.cheesyDrive(_oi.getDriveSpeed(), _oi.getCurvature(), _oi.getQuickTurn());
   }
 
   // Make this return true when this Command no longer needs to run execute()

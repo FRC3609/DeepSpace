@@ -44,11 +44,11 @@ public class DriveBase extends Subsystem
 	{
 		setDefaultCommand(new Drive(this));
 	}
-	public void cheesyDrive() 
+	
+	public void cheesyDrive(double driveSpeed, double curvature, boolean quickTurn) 
 	{
 		// Cheesy Drive
-		m_Drive.curvatureDrive(_oi.getDriveSpeed(), _oi.getCurvature(), _oi.getQuickTurn());
-		//m_Drive.tankDrive(_oi.getLeftDrive() * RobotMap.LIMITS.DRIVE_LIMIT, _oi.getRightDrive() * RobotMap.LIMITS.DRIVE_LIMIT, true);
+		m_Drive.curvatureDrive(driveSpeed, curvature, quickTurn);
 	}
 
 	public void Stop() 
