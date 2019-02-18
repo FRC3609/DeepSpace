@@ -38,6 +38,6 @@ public class RobotMap
   }
   public static class LIMITS
   {
-    public static final double DRIVE_LIMIT = 0.8;
+    public static final double DRIVE_POWER_LIMIT = 0.8;
   }
 }

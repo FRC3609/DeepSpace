@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,31 +45,54 @@ public class OI
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   private XboxController _driverController;
-  private XboxController _operatorController;
+  private Joystick _operatorController;
 
   public OI() 
   {
     _driverController = new XboxController(RobotMap.CONTROLLER.DRIVER_CONTROLLER);
-    _operatorController = new XboxController(RobotMap.CONTROLLER.OPERATOR_CONTROLLER);
+    _operatorController = new Joystick(RobotMap.CONTROLLER.OPERATOR_CONTROLLER);
   }
+  /**
+   * Gets the left side drive power from the controller
+   * for tank drive.
+   * @return The left drive power output.
+   */
   public double getLeftDrive()
   {
     return _driverController.getY(Hand.kLeft);
   }
+  /**
+   * Gets the right side drive power from the controller
+   * for tank drive.
+   * @return The right drive power output
+   */
   public double getRightDrive()
   {
     return _driverController.getY(Hand.kRight);
   }
+  /**
+   * Gets the drive speed from the controller.
+   * @return The drive speed for curvature drive
+   */
   public double getDriveSpeed()
   {
     return _driverController.getY(Hand.kLeft);
   }
 
+  /**
+   * Gets the curvature angle from the controller
+   * @return The curvature for curvature drive
+   */
   public double getCurvature()
   {
     return _driverController.getX(Hand.kRight);
   }
 
+  /**
+   * Gets the quick turn flag for curvature drive so the robot
+   * can turn in place when selected.
+   * @return The quick turn flag for curvature drive
+   */
   public boolean getQuickTurn()
   {
     if(_driverController.getTriggerAxis(Hand.kLeft) > 0)
@@ -77,6 +101,11 @@ public class OI
     }
     return false;
   }
+  /**
+   * Gets the only instance of this object. Creates one if one 
+   * does not yet exist.
+   * @return The only instance of this object
+   */
   public static OI getInstance()
   {
     if (singleInstance == null)
